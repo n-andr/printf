@@ -1,6 +1,4 @@
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdio.h>
+#include "ft_printf.h"
 
 static int	putstr(char *str)
 {	
@@ -36,6 +34,10 @@ static int	format_specifier(const char *format, va_list args)
 	else if (*format == 's')
 	{
 		len += putstr(va_arg(args, char *));
+	}
+	else if (*format == 'i' || *format == 'd')
+	{
+		len += ft_putnbr(va_arg(args, int));
 	}
 	else
 		return(0);
@@ -76,8 +78,11 @@ int main()
     //ft_printf("Hello, %s! You have %% apples.\n", "John");
 	//printf("Hello, %s! You have %% apples.\n", "John");
 	
-	ft_printf("%c, %c, %c\n", 'A', 'b', 'c');
+	//ft_printf("%c, %c, %c\n", 'A', 'b', 'c');
 	//printf("%c for %s\n", 'E', "Effort");
-
+	ft_printf("Number: %d\n", 1234560000);
+	printf("Number: %d\n", 1234560000);
+	ft_printf("Number: %i\n", 000000);
+	printf("Number: %i\n", 000000);
     return 0;
 }
