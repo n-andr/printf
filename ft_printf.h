@@ -2,4 +2,5 @@
 #include <unistd.h>
 #include <stdio.h>
 int	ft_printf(const char *format, ...);
-int	ft_putnbr(int nb);
+int	putnbr(int nb);
+int	print_pointer(unsigned long address);

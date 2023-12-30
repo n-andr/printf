@@ -37,7 +37,7 @@ static int	conv_to_char(int nb)
 	return (len);
 }
 
-int	ft_putnbr(int nb)
+int	putnbr(int nb)
 {
 	int	len;
 
