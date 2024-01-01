@@ -37,7 +37,11 @@ static int	format_specifier(const char *format, va_list *args)
 	}
 	else if (*format == 'i' || *format == 'd')
 	{
-		len += putnbr(va_arg(*args, int));
+		len += putnbr((unsigned long)va_arg(*args, int));
+	}
+	else if (*format == 'u')
+	{
+		len += putnbr((unsigned long)va_arg(*args, unsigned int));
 	}
 	else if (*format == 'p')
 	{
@@ -76,6 +80,7 @@ int	ft_printf(const char *format, ...)
 
 
 #include <stdio.h>
+#include <limits.h>
 int main()
 {
     // Example
@@ -84,11 +89,11 @@ int main()
 
 	int *ptr = &number;
 
-	ft_printf("The value of the pointer M: %p\n", (void *)ptr);
-	printf("The value of the pointer O: %p\n", (void *)ptr);
+	// ft_printf("The value of the pointer M: %p\n", (void *)ptr);
+	// printf("The value of the pointer O: %p\n", (void *)ptr);
 
-	ft_printf("The value of the pointer M: %p\n", NULL);
-	printf("The value of the pointer O: %p\n", NULL);
+	// ft_printf("The value of the pointer M: %p\n", NULL);
+	// printf("The value of the pointer O: %p\n", NULL);
 
 
 
@@ -100,9 +105,13 @@ int main()
 	// ft_printf("%c for %s\n", 'E', "Effort");
 	// printf("%c, %c, %c\n", 'A', 'b', 'c');
 	// printf("%c for %s\n", 'E', "Effort");
-	// ft_printf("Number: %d\n", 1234560000);
-	// printf("Number: %d\n", 1234560000);
-	// ft_printf("Number: %i\n", 000000);
-	// printf("Number: %i\n", 000000);
+	ft_printf("Number M: %d\n", INT_MIN);
+	printf("Number O: %d\n", INT_MIN);
+	ft_printf("Number M: %i\n", 000000);
+	printf("Number O: %i\n", 000000);
+	ft_printf("Number M: %u\n", 4294967);
+	printf("Number O: %u\n", 4294967);
+	// printf("%ld %ld", LONG_MIN, LONG_MAX);
+	// printf("%d %d", INT_MIN, INT_MAX);
     return 0;
 }

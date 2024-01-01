@@ -18,8 +18,6 @@ int	print_pointer(unsigned long address)
 	int		nibble;
 	char	hex_char;
 
-	// if (address == 0)
- 	// 	return(write(1, "0x0", 3));
 	len = 0;
 	i = sizeof(unsigned long) * 2 - 1;
 	len += write(1, "0x", 2);

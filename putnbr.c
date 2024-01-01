@@ -9,12 +9,12 @@ static int	write_char(int n)
 	return (1);
 }
 
-static int	conv_to_char(int nb)
+static int	conv_to_char(long nb)
 {
-	int	n;
-	int	i;
-	int	n2;
-	int len;
+	long	n;
+	int		i;
+	long	n2;
+	int 	len;
 
 	n = nb;
 	i = 1;
@@ -37,16 +37,16 @@ static int	conv_to_char(int nb)
 	return (len);
 }
 
-int	putnbr(int nb)
+int	putnbr(long nb)
 {
 	int	len;
 
 	len = 0;
 	if (nb >= 0)
 		len += conv_to_char(nb);
-	if (nb == -2147483648)
-		len += write (1, "-2147483648", 11);
-	if (nb < 0 && nb != -2147483648)
+	// if (nb == -2147483648)
+	// 	len += write (1, "-2147483648", 11);
+	if (nb < 0)
 	{
 		len += write (1, "-", 1);
 		len += conv_to_char(-nb);
