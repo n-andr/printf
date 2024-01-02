@@ -38,9 +38,9 @@ static int	format_specifier(const char *format, va_list *args)
 	else if (*format == 'p')
 		len += print_pointer((unsigned long)va_arg(*args, void *));
 	else if (*format == 'x')
-		len += print_pointer((unsigned int)va_arg(*args, int));
-	else
-		return(0);
+		len += print_int_to_hex((unsigned int)va_arg(*args, int), 0);
+	else if (*format == 'X')
+		len += print_int_to_hex((unsigned int)va_arg(*args, int), 1);
 	return(len);
 }
 
@@ -77,7 +77,7 @@ int main()
 {
     // Example
 	
-	int number = -250;
+	int number = 25000;
 
 	int *ptr = &number;
 
@@ -104,7 +104,7 @@ int main()
 	// printf("Number O: %u\n", UINT_MAX);
 	// ft_printf("Number M: %u\n", INT_MAX);
 	// printf("Number O: %u\n", INT_MAX);
-	ft_printf("O: number %i in hex is %x\n", number, number);
+	ft_printf("M: number %i in hex is %x\n", number, number);
 	printf("O: number %i in hex is %x\n", number, number);
 	//printf("O: number %i in hex is %X\n", number, number);
     return 0;
