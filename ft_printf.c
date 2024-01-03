@@ -6,7 +6,10 @@ static int	putstr(char *str)
 
 	len = 0;
 	if (str == NULL)
+	{
 		len += write(1, "(null)", 6);
+		return(len);
+	}
 	while (*str)
 	{
 		write(1, str, 1);
@@ -38,9 +41,9 @@ static int	format_specifier(const char *format, va_list *args)
 	else if (*format == 'p')
 		len += print_pointer((unsigned long)va_arg(*args, void *));
 	else if (*format == 'x')
-		len += print_pointer((unsigned int)va_arg(*args, int));
-	else
-		return(0);
+		len += print_int_to_hex((unsigned int)va_arg(*args, int), 0);
+	else if (*format == 'X')
+		len += print_int_to_hex((unsigned int)va_arg(*args, int), 1);
 	return(len);
 }
 
@@ -49,7 +52,7 @@ int	ft_printf(const char *format, ...)
 	va_list	*args;
 	int		count;
 
-	args = NULL;
+	args = malloc(sizeof(va_list));
 	va_start(*args, format);
 	count = 0;
 	while (*format)
@@ -67,6 +70,7 @@ int	ft_printf(const char *format, ...)
 		format++;
 	}
 	va_end(*args);
+	free (args);
 	return(count);
 }
 

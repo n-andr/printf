@@ -58,7 +58,7 @@ int	print_int_to_hex(int number, int upper)
 	{
 		nibble = (number >> (i * 4)) & 0xF;
 		hex_char = int2hex(nibble);
-		if (upper == 1)
+		if (upper == 1 && (hex_char >= 'a' && hex_char <= 'z'))
 			hex_char -= 32;
 		len += write(1, &hex_char, 1);
 		i--;
