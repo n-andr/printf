@@ -27,6 +27,12 @@ int main()
 	ft_printf("The value of the pointer M: %p\n", NULL);
 	printf("The value of the pointer O: %p\n", NULL);
 
+	ft_printf("m: hello%\06hello\n");
+	printf("o: hello%\06hello\n");
+
+	printf ("m:%i\n", ft_printf(""));
+	printf ("o:%i\n", printf(""));
+
     ft_printf("M: Hello, %s! You have %i apples.\n", "John", number);
 	printf("O: Hello, %s! You have %i apples.\n", "John", number);
 	
