@@ -1,14 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nandreev <nandreev@student.42berlin.de     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/05 13:49:44 by nandreev          #+#    #+#             */
+/*   Updated: 2024/01/05 14:22:42 by nandreev         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static int	putstr(char *str)
-{	
+{
 	int	len;
 
 	len = 0;
 	if (str == NULL)
 	{
 		len += write(1, "(null)", 6);
-		return(len);
+		return (len);
 	}
 	while (*str)
 	{
@@ -44,7 +56,7 @@ static int	format_specifier(const char *format, va_list *args)
 		len += print_int_to_hex((unsigned int)va_arg(*args, int), 0);
 	else if (*format == 'X')
 		len += print_int_to_hex((unsigned int)va_arg(*args, int), 1);
-	return(len);
+	return (len);
 }
 
 int	ft_printf(const char *format, ...)
@@ -71,7 +83,7 @@ int	ft_printf(const char *format, ...)
 	}
 	va_end(*args);
 	free (args);
-	return(count);
+	return (count);
 }
 
 /*#include <stdio.h>

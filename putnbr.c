@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   putnbr.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nandreev <nandreev@student.42berlin.de     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/05 13:50:03 by nandreev          #+#    #+#             */
+/*   Updated: 2024/01/05 14:17:11 by nandreev         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static int	write_char(int n)
@@ -14,7 +26,7 @@ static int	conv_to_char(long nb)
 	long	n;
 	int		i;
 	long	n2;
-	int 	len;
+	int		len;
 
 	n = nb;
 	i = 1;
@@ -44,8 +56,6 @@ int	putnbr(long nb)
 	len = 0;
 	if (nb >= 0)
 		len += conv_to_char(nb);
-	// if (nb == -2147483648)
-	// 	len += write (1, "-2147483648", 11);
 	if (nb < 0)
 	{
 		len += write (1, "-", 1);

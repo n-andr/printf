@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_hex.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nandreev <nandreev@student.42berlin.de     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/05 13:50:00 by nandreev          #+#    #+#             */
+/*   Updated: 2024/01/05 14:35:45 by nandreev         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static char	int2hex(int nibble)
@@ -8,7 +20,7 @@ static char	int2hex(int nibble)
 		hex_char = '0' + nibble;
 	else
 		hex_char = 'a' + nibble - 10;
-	return(hex_char);
+	return (hex_char);
 }
 
 int	print_pointer(unsigned long address)
@@ -19,23 +31,25 @@ int	print_pointer(unsigned long address)
 	char	hex_char;
 
 	len = 0;
+	if (address == 0)
+		return (write(1, "(nil)", 5));
 	i = sizeof(unsigned long) * 2 - 1;
 	len += write(1, "0x", 2);
-	while(i >= 1)
+	while (i >= 1)
 	{
 		nibble = (address >> (i * 4)) & 0xF;
 		if (nibble != 0) 
-			break;
+			break ;
 		i--;
 	}
-	while(i >= 0)
+	while (i >= 0)
 	{
 		nibble = (address >> (i * 4)) & 0xF;
 		hex_char = int2hex(nibble);
 		len += write(1, &hex_char, 1);
 		i--;
 	}
-	return(len);
+	return (len);
 }
 
 int	print_int_to_hex(int number, int upper)
@@ -47,14 +61,14 @@ int	print_int_to_hex(int number, int upper)
 
 	len = 0;
 	i = sizeof(int) * 2 - 1;
-	while(i >= 1)
+	while (i >= 1)
 	{
 		nibble = (number >> (i * 4)) & 0xF;
 		if (nibble != 0) 
-			break;
+			break ;
 		i--;
 	}
-	while(i >= 0)
+	while (i >= 0)
 	{
 		nibble = (number >> (i * 4)) & 0xF;
 		hex_char = int2hex(nibble);
@@ -63,5 +77,5 @@ int	print_int_to_hex(int number, int upper)
 		len += write(1, &hex_char, 1);
 		i--;
 	}
-	return(len);
+	return (len);
 }
