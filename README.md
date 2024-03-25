@@ -1,6 +1,6 @@
-# Print_f
+# Printf
 
-Print_f is a project assigned as part of the curriculum at 42 school. The goal of this project is to implement a simplified version of the standard C library function `printf`.
+Printf is a project assigned as part of the curriculum at 42 school. The goal of this project is to implement a simplified version of the standard C library function `printf`.
 
 ## Overview
 
@@ -10,12 +10,12 @@ In the Print_f project, you will implement a basic version of the `printf` funct
 
 ## Getting Started
 
-To get started with the Print_f project, follow these steps:
+To get started with the Printf project, follow these steps:
 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/Print_f.git
+git clone https://github.com/yourusername/Printf.git
 ```
 
 ## Supported Format Specifiers
@@ -37,8 +37,8 @@ To use the Print_f function in your C program, include the Print_f.h header file
 #include "ft_printf.h"
 
 int main() {
-    ft_print_f("Hello, %s!\n", "world");
-    ft_print_f("The value of x is %d\n", x);
+    ft_printf("Hello, %s!\n", "world");
+    ft_printf("The value of x is %d\n", x);
     return 0;
 }
 ```
